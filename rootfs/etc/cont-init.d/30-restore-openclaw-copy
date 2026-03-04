@@ -1,0 +1,13 @@
+#!/command/with-contenv bash
+
+CONFIG_FILE="$OPENCLAW_STATE_DIR/openclaw.json"
+CONFIG_COPY_FILE="$OPENCLAW_STATE_DIR/openclaw.copy.json"
+
+if [ -f "$CONFIG_COPY_FILE" ]; then
+  echo "[restore-openclaw-json] openclaw.copy.json found, restoring to openclaw.json"
+  rm "$CONFIG_FILE" 2>/dev/null || true
+  cp "$CONFIG_COPY_FILE" "$CONFIG_FILE"
+  echo "[restore-openclaw-json] Using config copy from $CONFIG_COPY_FILE"
+else
+  echo "[restore-openclaw-json] Config copy not found, using default config"
+fi

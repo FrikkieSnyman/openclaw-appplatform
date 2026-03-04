@@ -3,6 +3,7 @@
 source /etc/s6-overlay/lib/env-utils.sh
 source_env_prefix OPENCLAW_
 
+export NODE_OPTIONS="--max-old-space-size=6144"
 echo "[openclaw] Starting openclaw gateway..."
 # Allow openclaw to use tailscale
 if [ "${TAILSCALE_ENABLE:-false}" = "true" ]; then
