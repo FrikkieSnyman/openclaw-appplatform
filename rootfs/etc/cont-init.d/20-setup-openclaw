@@ -7,6 +7,7 @@ source_env_prefix OPENCLAW_
 
 # OpenClaw requires any env vars consumed in config to exist or else it fails to start.
 persist_env_var OPENCLAW_ \
+  NODE_OPTIONS="--max-old-space-size=6144" \
   GRADIENT_API_KEY=change-me \
   TAILSCALE_ENABLE="${TAILSCALE_ENABLE:-false}" \
   TS_SOCKET="${TS_SOCKET}" \
@@ -44,6 +45,11 @@ source_env_prefix OPENCLAW_ 2>/dev/null || true
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# pnpm
+# go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:/usr/local/go/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

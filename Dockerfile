@@ -30,6 +30,7 @@ ENV S6_KEEP_ENV=1
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 ENV S6_LOGGING=0
+ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Install OS deps + Node.js + sshd + restic + s6-overlay
 RUN set -eux; \
@@ -54,6 +55,12 @@ RUN set -eux; \
   build-essential \
   procps \
   xz-utils; \
+  # Install Go
+  GO_ARCH="$( [ "$TARGETARCH" = "arm64" ] && echo arm64 || echo amd64 )"; \
+  wget -q -O /tmp/go.tar.gz \
+  https://go.dev/dl/go1.23.6.linux-${GO_ARCH}.tar.gz; \
+  tar -C /usr/local -xzf /tmp/go.tar.gz; \
+  rm /tmp/go.tar.gz; \
   # Install restic
   RESTIC_ARCH="$( [ "$TARGETARCH" = "arm64" ] && echo arm64 || echo amd64 )"; \
   wget -q -O /tmp/restic.bz2 \
