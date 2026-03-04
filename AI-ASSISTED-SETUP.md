@@ -37,7 +37,7 @@ The simplest deployment - gateway with CLI access only via `doctl apps console`.
 ```
 Deploy OpenClaw to DigitalOcean App Platform using the CLI-only configuration.
 
-Use the app spec from https://github.com/digitalocean-labs/openclaw-appplatform with:
+Use the app spec from https://github.com/FrikkieSnyman/openclaw-appplatform with:
 - Instance size: basic-xxs (1 CPU, 512MB shared)
 - All feature flags disabled (ENABLE_NGROK=false, TAILSCALE_ENABLE=false, ENABLE_SPACES=false)
 - ENABLE_UI=true (so we can use UI later if needed)

@@ -59,7 +59,7 @@ The simplest deployment. Access via `doctl apps console` and use CLI commands.
 
 ```bash
 # Clone the repo
-git clone https://github.com/digitalocean-labs/openclaw-appplatform
+git clone https://github.com/FrikkieSnyman/openclaw-appplatform
 cd openclaw-appplatform
 
 # Edit app.yaml - set instance size for Stage 1
